@@ -1656,9 +1656,9 @@
     "restore": {
       "projectUniqueName": "Dispatcher",
       "projectName": "Dispatcher",
-      "projectPath": "C:\\Users\\arthu\\Projects\\UiPath\\Generate Yearly Report\\v2\\Dispatcher\\.local",
+      "projectPath": "C:\\Users\\arthu\\Projects\\UiPath\\Generate Yearly Report\\GenerateYearlyReportBot\\Dispatcher\\.local",
       "packagesPath": "C:\\Users\\arthu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\arthu\\Projects\\UiPath\\Generate Yearly Report\\v2\\Dispatcher\\.local"
+      "outputPath": "C:\\Users\\arthu\\Projects\\UiPath\\Generate Yearly Report\\GenerateYearlyReportBot\\Dispatcher\\.local"
     },
     "frameworks": {
       "net461": {
