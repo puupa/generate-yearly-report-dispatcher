@@ -65,7 +65,7 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description: Get data from System 1 website Work Items.&#xD;&#xA;&#xD;&#xA;If no new data, set out_TransactionItem to Nothing. &#xA;&#xA;TransactionNumber: “TransactionNumber represents the page number&quot; &#xA;&#xA;If the process is repeatable, set io_TransactionData once for in_TransactionNumber 1, then assign a new out_TransactionItem by using the in_TransactionNumber to index io_TransactionData. Be aware that, at the end of the io_TransactionData collection, it is your responsibility to set out_TransactionItem to Nothing, thus ending the process." DisplayName="GetTransactionData" sap:VirtualizedContainerService.HintSize="874,1704" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Description: Get data from System 1 website Work Items.&#xA;&#xA;If no new data, set out_TransactionItem to Nothing. &#xA;&#xA;TransactionNumber: “TransactionNumber represents the page number&quot; &#xA;&#xA;If the process is repeatable, set io_TransactionData once for in_TransactionNumber 1, then assign a new out_TransactionItem by using the in_TransactionNumber to index io_TransactionData. Be aware that, at the end of the io_TransactionData collection, it is your responsibility to set out_TransactionItem to Nothing, thus ending the process." DisplayName="GetTransactionData" sap:VirtualizedContainerService.HintSize="874,1704" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="nextPage" />
     </Sequence.Variables>
@@ -75,7 +75,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <If Condition="[out_TransactionItem isNot Nothing]" DisplayName="If a new Item is fetched Grab it's significant data for logging" sap:VirtualizedContainerService.HintSize="832,1465" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[in_TransactionNumber &gt;= 1]" DisplayName="If a new Item is fetched Grab it's significant data for logging" sap:VirtualizedContainerService.HintSize="832,1465" sap2010:WorkflowViewState.IdRef="If_1">
       <If.Then>
         <Sequence sap:VirtualizedContainerService.HintSize="687,1317" sap2010:WorkflowViewState.IdRef="Sequence_4">
           <sap:WorkflowViewStateService.ViewState>
@@ -89,7 +89,7 @@
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="611,645" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence DisplayName="Check if the next page exists" sap:VirtualizedContainerService.HintSize="611,645" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="dynamicSelector" />
                     <Variable x:TypeArguments="x:Boolean" Name="nextPageExists" />
@@ -97,6 +97,7 @@
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <Assign sap:VirtualizedContainerService.HintSize="569,60" sap2010:WorkflowViewState.IdRef="Assign_5">
@@ -144,7 +145,9 @@
                           <OutArgument x:TypeArguments="x:String">[out_TransactionItem]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">[Nothing]</InArgument>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
                         </Assign.Value>
                       </Assign>
                     </If.Else>
